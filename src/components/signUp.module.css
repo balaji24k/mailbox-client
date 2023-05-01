@@ -1,0 +1,21 @@
+.signup {
+    margin: 3rem auto;
+    max-width: 30rem;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+    padding: 4rem;
+    text-align: left;
+    background-color: rgb(38, 74, 98);
+  }
+  .signup h1 {
+    color: white;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  .h2 {
+    margin: 1rem auto;
+    max-width: 30rem;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+    padding: 0.5rem;
+    text-align: center;
+    background-color: rgb(145, 243, 181);
+  }
