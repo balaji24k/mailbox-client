@@ -5,7 +5,7 @@ import {
     Button,
     NavLink,
   } from "react-bootstrap";
-  import classes from "./signUp.module.css";
+  import classes from "./SignUp.module.css";
   import { useRef } from "react";
   
   const SignUp = () => {

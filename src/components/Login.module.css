@@ -1,0 +1,11 @@
+.login{
+    margin: 4rem auto;
+    max-width: 45rem;
+    padding: 7rem;
+    border-radius: 15rem;
+    box-shadow: 0 15rem 20rem rgba(0, 0, 0, 0.2);
+
+}
+.login h1{
+    color: white;
+}
