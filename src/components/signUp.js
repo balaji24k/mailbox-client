@@ -1,13 +1,8 @@
-import {
-    FloatingLabel,
-    Form,
-    FormControl,
-    Button,
-    NavLink,
-  } from "react-bootstrap";
-  import classes from "./SignUp.module.css";
-  import { useRef } from "react";
-  
+import { FloatingLabel, Form, FormControl, Button } from "react-bootstrap";
+import classes from "./SignUp.module.css";
+import { useRef } from "react";
+import { NavLink } from "react-router-dom";
+
   const SignUp = () => {
     const emailInpurRef = useRef();
     const passwordInputRef = useRef();
@@ -92,11 +87,12 @@ import {
                 Sign Up
               </Button>
             </div>
+            <div className={classes.h2}>
+              <NavLink to={"/login"}>Have an account?</NavLink>
+            </div>
           </Form>
         </div>
-        <div className={classes.h2}>
-          <NavLink>Have an account?</NavLink>
-        </div>
+        
       </>
     );
   };
