@@ -59,10 +59,16 @@ const ComposeEmail = () => {
     axios
       .post(
         `https://react-auth-96423-default-rtdb.firebaseio.com/${sanitizedReceiverEmail}/inbox.json`,
-        message
+        {
+          from: toRef.current.value,
+          subject: subjectRef.current.value,
+          content: editorState.getCurrentContent().getPlainText(),
+          read: false,
+        }
       )
       .then((response) => {
         console.log(response);
+        console.log(sanitizedReceiverEmail);
         toRef.current.value = "";
         subjectRef.current.value = "";
         setEditorState("");
