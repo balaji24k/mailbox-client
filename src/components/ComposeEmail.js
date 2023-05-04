@@ -42,7 +42,7 @@ const ComposeEmail = () => {
     // sending data to the outbox
     axios
       .post(
-        `https://react-auth-96423-default-rtdb.firebaseio.com/${sanitizedSenderEmail}/outbox.json`,
+        `https://react-auth-96423-default-rtdb.firebaseio.com/${sanitizedSenderEmail}/sentbox.json`,
         message
       )
       .then((response) => {
@@ -60,7 +60,7 @@ const ComposeEmail = () => {
       .post(
         `https://react-auth-96423-default-rtdb.firebaseio.com/${sanitizedReceiverEmail}/inbox.json`,
         {
-          from: toRef.current.value,
+          from: senderEmail,
           subject: subjectRef.current.value,
           content: editorState.getCurrentContent().getPlainText(),
           read: false,

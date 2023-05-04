@@ -41,7 +41,7 @@ const Inbox = () => {
 
     axios
       .get(
-        `https://react-auth-96423-default-rtdb.firebaseio.com/${sanitizedEmail}/outbox.json`
+        `https://react-auth-96423-default-rtdb.firebaseio.com/${sanitizedEmail}/inbox.json`
       )
       .then((response) => {
         console.log(
@@ -61,12 +61,13 @@ const Inbox = () => {
   };
 
   const deleteEmail = (key) => {
+    console.log(key, "inside delete")
     axios
       .delete(
-        `https://react-auth-96423-default-rtdb.firebaseio.com/${sanitizedEmail}/outbox/${key}.json`
+        `https://react-auth-96423-default-rtdb.firebaseio.com/${sanitizedEmail}/inbox/${key}.json`
       )
       .then((response) => {
-        console.log("Email deleted successfully:", response.data);
+        console.log("Email deleted successfully:", response.data);  
         const updatedMessages = { ...messages };
         delete updatedMessages[key];
         setMessages(updatedMessages);
@@ -78,7 +79,7 @@ const Inbox = () => {
 
   return (
     <div>
-      <h3 style={{ color: "white" }}>Inbox-({sanitizedEmail})</h3>
+      <h3 style={{ color: "white" }}>Inbox-({userEmail})</h3>
       <Card className="text-left">
         <ListGroup variant="flush">
         {Object.keys(messages)
@@ -98,15 +99,16 @@ const Inbox = () => {
                       }}
                     ></span>
                   )}
-                  {`${messages[key].to}: ${messages[key].subject} - ${messages[key].content}`}
-                  <Button
+                  {`${messages[key].from}: ${messages[key].subject} - ${messages[key].content}`}
+                  
+                </div>
+                <Button
                     variant="outline-danger"
                     style={{ marginLeft: "60rem" }}
                     onClick={() => deleteEmail(key)}
                   >
                     Delete
-                  </Button>{" "}
-                </div>
+                </Button>{" "}
               </ListGroup.Item>
             ))}
         </ListGroup>
@@ -121,8 +123,8 @@ const Inbox = () => {
         </Modal.Header>
         <Modal.Body>
           <p>
-            <strong>To: </strong>
-            {selectedEmail && selectedEmail.to}
+            <strong>From: </strong>
+            {selectedEmail && selectedEmail.from}
           </p>
           <p>
             <strong>Subject: </strong>

@@ -6,6 +6,8 @@ import { useSelector } from 'react-redux';
 import NavbarDetails from "./components/NavBar";
 import ComposeEmail from "./components/ComposeEmail";
 import Inbox from "./components/Inbox";
+import Sent from './components/Sentbox';
+
 
 function App() {
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
@@ -29,6 +31,10 @@ function App() {
         </Route>
         <Route exact path="/">
           {isAuthenticated && <Redirect to="/composemail" />}
+          {!isAuthenticated && <Redirect to="/login" />}
+        </Route>
+        <Route path="/sentbox">
+          {isAuthenticated && <Sent/>}
           {!isAuthenticated && <Redirect to="/login" />}
         </Route>
       </Switch>
