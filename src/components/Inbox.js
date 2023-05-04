@@ -60,6 +60,22 @@ const Inbox = () => {
     setSelectedEmail(null);
   };
 
+  const deleteEmail = (key) => {
+    axios
+      .delete(
+        `https://react-auth-96423-default-rtdb.firebaseio.com/${sanitizedEmail}/outbox/${key}.json`
+      )
+      .then((response) => {
+        console.log("Email deleted successfully:", response.data);
+        const updatedMessages = { ...messages };
+        delete updatedMessages[key];
+        setMessages(updatedMessages);
+      })
+      .catch((error) => {
+        console.log("Error deleting email:", error);
+      });
+  };
+
   return (
     <div>
       <h3 style={{ color: "white" }}>Inbox-({sanitizedEmail})</h3>
@@ -83,6 +99,13 @@ const Inbox = () => {
                     ></span>
                   )}
                   {`${messages[key].to}: ${messages[key].subject} - ${messages[key].content}`}
+                  <Button
+                    variant="outline-danger"
+                    style={{ marginLeft: "60rem" }}
+                    onClick={() => deleteEmail(key)}
+                  >
+                    Delete
+                  </Button>{" "}
                 </div>
               </ListGroup.Item>
             ))}
