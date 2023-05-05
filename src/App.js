@@ -30,7 +30,7 @@ function App() {
           {!isAuthenticated && <Redirect to="/login" />}
         </Route>
         <Route exact path="/">
-          {isAuthenticated && <Redirect to="/composemail" />}
+          {isAuthenticated && <Redirect to="/inbox" />}
           {!isAuthenticated && <Redirect to="/login" />}
         </Route>
         <Route path="/sentbox">

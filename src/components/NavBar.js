@@ -41,10 +41,10 @@ const NavbarDetails = () => {
           )}
           {isAuthenticated && (
             <div>
-            <NavLink to="/inbox" className={classes.style} style={{color:"black"}} >
+            <NavLink to="/inbox" className={classes.style} >
               Inbox
             </NavLink>
-            <NavLink to="/sentbox" className={classes.style} style={{color:"black"}} >
+            <NavLink to="/sentbox" className={classes.style} >
             Sent box
             </NavLink>
             </div>
