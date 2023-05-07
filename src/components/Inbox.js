@@ -7,7 +7,7 @@ const Inbox = () => {
   const [messages, setMessages] = useState([]);
   const [selectedEmail, setSelectedEmail] = useState(null);
   const [unreadcount,setUnreadCount] = useState(0);
-
+  
   const userEmail = localStorage.getItem("email");
   const sanitizedEmail = userEmail.replace(/[@.]/g, "");
 
@@ -50,13 +50,14 @@ const Inbox = () => {
 
         let unread = 0;
         for (let i in response.data) {
-          console.log(response.data[i].read,"insideLoop");
           if (response.data[i].read === false) {
             unread +=1;
           }
         }
+        console.log(unread,"afterCountLoop",unreadcount);
 
         if (unread !== unreadcount) {
+          // console.log(unreadcount)
           setUnreadCount(unread);
         }
 
@@ -64,7 +65,7 @@ const Inbox = () => {
         if (response.data) {
           setMessages(response.data);
         }
-        
+          
       })
       .catch((error) => {
         console.log(`Error getting messages: ${error}`);
